@@ -1,25 +1,20 @@
 #pragma once
-#include "ArrayList.h"
-#include <unordered_map>
-
-const int SIZE = 9;
-
-struct Node
-{
-	char state[SIZE];
-	ArrayList<Node*> children;
-	Node() {
-		for (int i = 0; i < SIZE; i++) {
-			state[i] = ' ';
-		}
-	}
-};
+#include "Node.h"
 
 class Graph
 {
 public:
-	void buildGraph(Node* node, char currentPlayer, int depth, unordered_map<string, bool>& memo);
-	void printState(const Node* node);
+    Graph();
+    ~Graph();
+    void print();
 private:
-	void addNode(Node* parent, Node* child);
+    int check_win(int board[3][3]);
+    void add_children(Node* node, int player);
+    void dfs(Node* node, int depth);
+    Node* root;
+
+    const int GAME = 0;
+    const int CROSS = 1;
+    const int CIRCLE = 2;
+    const int TIE = 3;
 };

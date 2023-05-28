@@ -54,8 +54,8 @@ void Game::playerMove()
 
     int row, col;
     cin >> row >> col;
-    --row;
-    --col;
+    row -= 1;
+    col -= 1;
 
     if (currentGame.isValidMove(row, col)) {
         currentGame.makeMove(row, col, 'X');
@@ -76,10 +76,10 @@ void Game::computerMove(int level)
         computer.getRandomMove(currentGame, row, col);
     }
     else if (level == 2) {
-        computer.getBestMove(currentGame, row, col);
+        computer.getRandomMove(currentGame, row, col);
     }
     else if (level == 3) {
-        computer.getOptimalMove(currentGame, row, col);
+        computer.getRandomMove(currentGame, row, col);
     }
 
     currentGame.makeMove(row, col, 'O');
@@ -88,7 +88,7 @@ void Game::computerMove(int level)
 bool Game::isWinner(char player)
 {
     if (player == 'X')
-        return currentGame.isGameOver() && currentGame.isPlayerTurn();
-    else
         return currentGame.isGameOver() && !currentGame.isPlayerTurn();
+    else
+        return currentGame.isGameOver() && currentGame.isPlayerTurn();
 }

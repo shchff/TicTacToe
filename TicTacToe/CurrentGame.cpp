@@ -2,22 +2,21 @@
 
 CurrentGame::CurrentGame()
 {
-    // Инициализируем игровое поле пустыми ячейками
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             board[i][j] = ' ';
         }
     }
-    // Задаем первый ход случайному игроку
-    playerTurn = rand() % 2 == 0;
+
+    playerTurn = true;
 }
 
 void CurrentGame::printBoard()
 {
     cout << "  1 2 3" << endl;
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 3; i++) {
         cout << i + 1 << " ";
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 3; j++) {
             cout << board[i][j] << " ";
         }
         cout << endl;
@@ -44,8 +43,8 @@ bool CurrentGame::isGameOver()
 
     // Проверяем ничью
     bool isFull = true;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
             if (board[i][j] == ' ') {
                 isFull = false;
                 break;

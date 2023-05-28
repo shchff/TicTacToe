@@ -1,5 +1,2 @@
 ﻿  Graph.cpp
-  main.cpp
-C:\Code\ЯТП\2 семестр\TicTacToe\TicTacToe\main.cpp(10,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  Создание кода...
-  TicTacToe.vcxproj -> C:\Code\ЯТП\2 семестр\TicTacToe\x64\Debug\TicTacToe.exe
+  TicTacToe.vcxproj -> C:\Code\TicTacToe\x64\Debug\TicTacToe.exe
