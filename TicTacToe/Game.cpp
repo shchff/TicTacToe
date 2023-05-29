@@ -17,8 +17,6 @@ void Game::startGame()
         return;
     }
 
-
-    // Загружаем ходы для компьютера из файла
     if (!computer.loadMoves("dump.txt")) {
         cout << "Не удалось загрузить ходы для компьютера. Игра завершена." << endl;
         return;
@@ -137,19 +135,19 @@ bool Game::isWinner(char player)
 
 int Game::defineRotations(Move move)
 {
-    if ((move.row = 0 && move.col == 0) || (move.row = 1 && move.col == 1) || (move.row = 0 && move.col == 1))
+    if ((move.row == 0 && move.col == 0) || (move.row == 1 && move.col == 1) || (move.row == 0 && move.col == 1))
     {
         return 0;
     }
-    else if ((move.row = 0 && move.col == 2) || (move.row = 1 && move.col == 2))
+    else if ((move.row == 0 && move.col == 2) || (move.row == 1 && move.col == 2))
     {
         return 3;
     }
-    else if ((move.row = 2 && move.col == 2) || (move.row = 2 && move.col == 1))
+    else if ((move.row == 2 && move.col == 2) || (move.row == 2 && move.col == 1))
     {
         return 2;
     }
-    else if ((move.row = 2 && move.col == 0) || (move.row = 1 && move.col == 0))
+    else if ((move.row == 2 && move.col == 0) || (move.row == 1 && move.col == 0))
     {
         return 1;
     }
