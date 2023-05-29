@@ -2,8 +2,10 @@
 
 CurrentGame::CurrentGame()
 {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int i = 0; i < 3; i++) 
+    {
+        for (int j = 0; j < 3; j++) 
+        {
             board[i][j] = ' ';
         }
     }
@@ -14,9 +16,11 @@ CurrentGame::CurrentGame()
 void CurrentGame::printBoard()
 {
     cout << "  1 2 3" << endl;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++)
+    {
         cout << i + 1 << " ";
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 3; j++) 
+        {
             cout << board[i][j] << " ";
         }
         cout << endl;
@@ -27,10 +31,12 @@ bool CurrentGame::isGameOver()
 {
     // Проверяем выигрышные комбинации
     for (int i = 0; i < 3; i++) {
-        if (board[i][0] != ' ' && board[i][0] == board[i][1] && board[i][0] == board[i][2]) {
+        if (board[i][0] != ' ' && board[i][0] == board[i][1] && board[i][0] == board[i][2]) 
+        {
             return true;
         }
-        if (board[0][i] != ' ' && board[0][i] == board[1][i] && board[0][i] == board[2][i]) {
+        if (board[0][i] != ' ' && board[0][i] == board[1][i] && board[0][i] == board[2][i]) 
+        {
             return true;
         }
     }
@@ -43,18 +49,23 @@ bool CurrentGame::isGameOver()
 
     // Проверяем ничью
     bool isFull = true;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (board[i][j] == ' ') {
+    for (int i = 0; i < 3; i++) 
+    {
+        for (int j = 0; j < 3; j++) 
+        {
+            if (board[i][j] == ' ')
+            {
                 isFull = false;
                 break;
             }
         }
-        if (!isFull) {
+        if (!isFull) 
+        {
             break;
         }
     }
-    if (isFull) {
+    if (isFull) 
+    {
         return true;
     }
 
@@ -63,7 +74,8 @@ bool CurrentGame::isGameOver()
 
 bool CurrentGame::isValidMove(int row, int col)
 {
-    if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ') {
+    if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ') 
+    {
         return true;
     }
     return false;

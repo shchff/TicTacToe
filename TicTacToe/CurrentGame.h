@@ -4,7 +4,8 @@
 
 using namespace std;
 
-class CurrentGame {
+class CurrentGame 
+{
 public:
     CurrentGame();
     void printBoard();
@@ -13,7 +14,7 @@ public:
     void makeMove(int row, int col, char player);
     bool isPlayerTurn();
     void togglePlayerTurn();
-private:
     char board[3][3];
+private:
     bool playerTurn;
 };
