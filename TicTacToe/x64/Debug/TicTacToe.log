@@ -1,3 +1,4 @@
-﻿  Game.cpp
-C:\Code\TicTacToe\TicTacToe\Game.cpp(154): warning C4715: Game::defineRotations: значение возвращается не при всех путях выполнения
-  TicTacToe.vcxproj -> C:\Code\TicTacToe\x64\Debug\TicTacToe.exe
+﻿  CurrentGame.cpp
+  main.cpp
+  Создание кода...
+  TicTacToe.vcxproj -> C:\Code\ЯТП\2 семестр\TicTacToe\x64\Debug\TicTacToe.exe

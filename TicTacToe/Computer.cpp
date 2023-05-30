@@ -1,5 +1,9 @@
 #include "Computer.h"
 
+Computer::Computer()
+{
+}
+
 bool Computer::loadMoves(const string& fileName)
 {
     cout << "Загрузка графа" << endl;
@@ -17,27 +21,6 @@ bool Computer::loadMoves(const string& fileName)
     cout << "Граф загружен!" << endl;
 
     return true;
-}
-
-void Computer::getRandomMove(CurrentGame& currentGame, int& row, int& col)
-{
-    ArrayList<Move> availableMoves;
-
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (currentGame.isValidMove(i, j))
-            {
-                Move move = { i, j };
-                availableMoves.Append(move);
-            }
-        }
-    }
-
-    int randomIndex = rand() % availableMoves.Length();
-    row = availableMoves[randomIndex].row;
-    col = availableMoves[randomIndex].col;
 }
 
 void Computer::parseLine(string& line)
@@ -154,22 +137,22 @@ bool Computer::eqBoards(int board1[3][3], int board2[3][3])
     return true;
 }
 
-Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int level, int rotations)
+Move Computer::getOptionalMove(char board[3][3], int& row, int& col, int level, int rotations)
 {
     ArrayList<Move> availableMoves;
     ArrayList<int> states;
 
-    int currGameBoard[3][3];
+    int currGameBoard[3][3] = { 0 };
 
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            if (currentGame.board[i][j] == 'X')
+            if (board[i][j] == 'X')
             {
                 currGameBoard[i][j] = 1;
             }
-            else if (currentGame.board[i][j] == 'O')
+            else if (board[i][j] == 'O')
             {
                 currGameBoard[i][j] = 2;
             }
@@ -182,7 +165,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
 
     if (rotations == 1)
     {
-        int temp[3][3];
+        int temp[3][3] = { 0 };
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -198,7 +181,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
     }
     else if (rotations == 2)
     {
-        int temp[3][3];
+        int temp[3][3] = { 0 };
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -214,7 +197,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
     }
     else if (rotations == 3)
     {
-        int temp[3][3];
+        int temp[3][3] = { 0 };
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++)
@@ -251,7 +234,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
         int idx = 0;
         for (int i = 0; i < states.Length(); i++)
         {
-            if (states[i] < states[idx])
+            if (states[i] > states[idx])
                 idx = i;
         }
         row = availableMoves[idx].row;
@@ -268,7 +251,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
             sum += states[i];
         }
 
-        double average = sum / states.Length();
+        double average = double(sum) / states.Length();
 
 
         int idx = 0;
@@ -292,14 +275,14 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
         int idx = 0;
         for (int i = 0; i < states.Length(); i++)
         {
-            if (states[i] > states[idx])
+            if (states[i] < states[idx])
                 idx = i;
         }
         row = availableMoves[idx].row;
         col = availableMoves[idx].col;
     }
 
-    int boardToBack[3][3];
+    int boardToBack[3][3] = { 0 };
 
     for (int i = 0; i < 3; i++)
     {
@@ -313,7 +296,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
     
     if (rotations == 3)
     {
-        int temp[3][3];
+        int temp[3][3] = { 0 };
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -329,7 +312,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
     }
     else if (rotations == 2)
     {
-        int temp[3][3];
+        int temp[3][3] = { 0 };
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -345,7 +328,7 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
     }
     else if (rotations == 1)
     {
-        int temp[3][3];
+        int temp[3][3] = { 0 };
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++)
@@ -361,18 +344,15 @@ Move Computer::getOptionalMove(CurrentGame& currentGame, int& row, int& col, int
         }
     }
 
-
-    //int currGameBoard[3][3];
-
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            if (currentGame.board[i][j] == 'X')
+            if (board[i][j] == 'X')
             {
                 currGameBoard[i][j] = 1;
             }
-            else if (currentGame.board[i][j] == 'O')
+            else if (board[i][j] == 'O')
             {
                 currGameBoard[i][j] = 2;
             }

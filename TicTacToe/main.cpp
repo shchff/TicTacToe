@@ -9,7 +9,8 @@ int main() {
     //srand(time(0));
 
     Game newGame;
-    newGame.startGame();
+    newGame.startStream();
+
 
     //Graph G;
     ////G.print();
